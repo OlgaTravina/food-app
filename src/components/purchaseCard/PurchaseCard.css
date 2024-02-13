@@ -1,0 +1,36 @@
+.purchaseCard__card {
+	border-radius: 19px;
+	padding:10px;
+	border: 1.57px solid rgba(237, 242, 247, 1);
+	margin-bottom: 20px;
+}
+
+.purchaseCard__title {
+	font-family: Manrope;
+	font-size: 19px;
+	font-weight: 800;
+	line-height: 28px;
+	letter-spacing: 0.6282353401184082px;
+	text-align: left;
+	color: rgba(26, 32, 44, 1);
+}
+
+.purchaseCard__text {
+    font-family: Manrope;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 24px;
+	letter-spacing: 0.6282353401184082px;
+	text-align: left;
+	color: rgba(160, 174, 192, 1);
+}
+
+.purchaseCard__price {
+    font-family: Manrope;
+	font-size: 22px;
+	font-weight: 800;
+	line-height: 33px;
+	letter-spacing: 0.3141176700592041px;
+	text-align: right;
+	color: rgba(26, 32, 44, 1);
+}

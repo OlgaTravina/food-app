@@ -1,0 +1,36 @@
+.reviewCard__card {
+	border-radius: 20px;
+	padding: 20px;
+	background-color: white;
+	box-shadow: 6px 32px 30px 0px rgba(34, 60, 80, 0.2);
+}
+
+.reviewCard__name {
+	font-family: Poppins;
+	font-size: 21px;
+	font-weight: 500;
+	line-height: 31px;
+	letter-spacing: 0px;
+	text-align: left;
+	color: rgba(3, 3, 20, 1);
+}
+.reviewCard__description {
+	font-family: Quicksand;
+	font-size: 17px;
+	font-weight: 500;
+	line-height: 26px;
+	letter-spacing: 0px;
+	text-align: left;
+	color: rgba(94, 93, 93, 1);
+}
+
+.reviewCard__text {
+	font-family: Poppins;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 400;
+	line-height: 26px;
+	letter-spacing: 0px;
+	text-align: justified;
+	color: rgba(99, 99, 99, 1);
+}
