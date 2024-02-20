@@ -1,12 +1,6 @@
 import './ProductCard.css';
+import type { ProductCardProps } from "../../types";
 
-type ProductCardProps = { 
-	imgUrl: string,
-	tag: string,
-	title: string,
-	time: string,
-	rating: string
- }
 
  const innerStyle = {
     borderRadius: "0 0 30px 30px",
@@ -19,7 +13,7 @@ function ProductCard({imgUrl,tag,title,time,rating}: ProductCardProps) {
  
 	return (
 		<div className='productCard__card' >
-			<img src={imgUrl} alt="" />
+			<img src={imgUrl} alt="" style={{width:"396px",height:"175px",objectFit: "cover", borderTopLeftRadius:"30px",borderTopRightRadius:"30px"}}/>
 			<div style={innerStyle}>
 				<div className='productCard__tag'>{tag}</div>
 				<div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>

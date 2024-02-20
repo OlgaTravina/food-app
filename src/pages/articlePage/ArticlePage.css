@@ -1,0 +1,97 @@
+.articlePage__header{
+	font-family: Poppins;
+	font-size: 37px;
+	font-weight: 600;
+	line-height: 45px;
+	letter-spacing: 0em;
+	text-align: left;
+	color: rgba(37, 37, 37, 1);
+	margin-bottom: 32px;
+}
+
+.articlePage__writtenby{
+	font-family: Poppins;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 23px;
+	letter-spacing: 0em;
+	text-align: left;
+	color: rgba(141, 141, 141, 1);
+}
+
+.articlePage__name{
+	font-family: Poppins;
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 26px;
+	letter-spacing: 0em;
+	text-align: left;
+	color: rgba(0, 0, 0, 1);
+}
+
+.articlePage__reaction{
+	font-family: Manrope;
+	font-size: 19px;
+	font-weight: 400;
+	line-height: 26px;
+	letter-spacing: 0px;
+	text-align: left;
+	color: rgba(142, 151, 166, 1);
+}
+
+.articlePage__tags{
+	font-family: Poppins;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 23px;
+	letter-spacing: 0em;
+	text-align: right;
+	color: rgba(141, 141, 141, 1);
+}
+
+.articlePage__text{
+	font-family: Poppins;
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 45px;
+	letter-spacing: 0em;
+	text-align: justified;
+	color: rgba(37, 37, 37, 1);
+	margin-top: 60px;
+}
+
+.articlePage__button{
+	width: 186px;
+	height: 63px;
+	top: 1687px;
+	left: 799px;
+	border: 0;
+	color: rgba(108, 95, 188, 1);
+	text-align: center;
+	border-radius: 14.68px;
+	border: 1px solid rgba(108, 95, 188, 1);
+	margin-top: 90px;
+	margin-bottom: 100px;
+}
+
+.articlePage__button__text{
+	font-family: Poppins;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 24px;
+	letter-spacing: 0.01em;
+	text-align: left;
+	color: rgba(108, 95, 188, 1);
+	padding-left: 15px;
+}
+
+.articlePage__header-comment{
+	font-family: Poppins;
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 45px;
+	letter-spacing: 0em;
+	text-align: left;
+	color: rgba(37, 37, 37, 1);
+	margin-bottom: 77px;
+}
