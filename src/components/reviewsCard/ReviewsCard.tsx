@@ -24,9 +24,7 @@ function ReviewsCard({name,text}:ReviewsCardProps) {
 				
 			    
 			</div>
-			<p className="reviewCard__text">{text}</p>
-			
-			
+			<p className="reviewCard__text">{text}</p>		
 			
 		</div>
 	)

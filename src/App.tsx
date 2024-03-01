@@ -1,12 +1,8 @@
-import { BrowserRouter } from "react-router-dom";
-import { Routing } from "./Routing";
+import { PropsWithChildren} from "react";
+import "./App.css"
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routing />
-    </BrowserRouter>
-  );
+function App({ children }: PropsWithChildren) {
+  return <>{children}</>;
 }
 
 export default App;

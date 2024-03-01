@@ -1,56 +1,37 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import Menu from "../../components/menu/Menu";
 import ReviewsCard from "../../components/reviewsCard/ReviewsCard";
-import Footer from "../../components/footer/Footer";
 import "./ArticlePage.css";
-import type { Post, User, Comment, CommentResponse } from "../../types";
+import type { RootState, AppDispatch } from "../../store/";
+import { fetchPost, addPostComment } from "../../store/articleSlice";
 
 
 function ArticlePage() {
   const { idArticle } = useParams();
-  const [post, setPost] = useState<Post>();
-  const [user, setUser] = useState<User>();
-  const [comments, setComments] = useState<Comment[]>([]);
+
+  const [addCommentText, setAddCommentText] = useState("");
+
+  const commentUserId = 1;
+ 
+  const post = useSelector((state:RootState) => state.article.post);
+  const user = useSelector((state: RootState) => state.article.postUser);
+  const comments = useSelector((state: RootState) => state.article.comments);
+
+  const dispatch = useDispatch<AppDispatch>();
+
+   useEffect(() => {
+     dispatch(fetchPost(idArticle || "1"));
+   }, [dispatch,idArticle]); 
+
+
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(
-      `https://dummyjson.com/posts/${idArticle}?select=title,id,body,userId,tags,reactions`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setPost(data);
-
-        fetch(
-          `https://dummyjson.com/users/${data.userId}?select=firstName,lastName,image`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            setUser(data);
-          });
-      });
-
-    fetch(`https://dummyjson.com/comments/post/${idArticle}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setComments(
-          data.comments.map((comment: CommentResponse) => {
-            return {
-              id: comment.id,
-              body: comment.body,
-              postId: comment.postId,
-              username: comment.user.username,
-            };
-          })
-        );
-      });
-  }, []);
-
+  
   return (
-    <div className="main-background-color">
+    
       <div className="container-1248">
-        <Menu />
+    
         <div
           style={{
             paddingLeft: "30px",
@@ -90,7 +71,7 @@ function ArticlePage() {
                 />
               </div>
               <div className="articlePage__tags">
-                {post?.tags.map((tag) => "#" + tag).join()}
+                {post?.tags?.map((tag) => "#" + tag).join()}
               </div>
             </div>
           </div>
@@ -116,10 +97,31 @@ function ArticlePage() {
             <ReviewsCard name={comment.username} text={comment.body} />
           ))}
         </div>
-      </div>
 
-      <Footer />
-    </div>
+        <h1 className="articlePage__text-comment">
+          Add <span className="highlight-text">comment</span>
+        </h1>
+        <textarea
+          value={addCommentText}
+          onChange={(e) => setAddCommentText(e.target.value)}
+          className="articlePage__form-comment"
+          placeholder="ENTER YOUR COMMENT"
+        ></textarea>
+        <button
+          className="articlePage__form-button"
+          onClick={() =>
+            dispatch(
+              addPostComment({
+                body: addCommentText,
+                postId: post.id,
+                userId: commentUserId,
+              })
+            )
+          }
+        >
+          <span className="articlePage__text-button">Send</span>
+        </button>
+      </div>
   );
 }
 

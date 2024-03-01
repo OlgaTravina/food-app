@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot PurchaseCard 1`] = `
+<div>
+  <div
+    class="purchaseCard__card"
+  >
+    <div
+      style="display: flex; gap: 20px; align-items: center;"
+    >
+      <img
+        alt=""
+        class=""
+        src="/images/Control Purchase/icon (1).svg"
+      />
+      <div>
+        <div
+          class="purchaseCard__title"
+        >
+          Expense
+        </div>
+        <div
+          class="purchaseCard__text"
+        >
+          Increased By 10%
+        </div>
+      </div>
+      <span
+        class="purchaseCard__price"
+        style="margin-left: auto;"
+      >
+        $409.00
+      </span>
+    </div>
+    <img
+      alt=""
+      src="/images/Control Purchase/divider (1).svg"
+      style="min-width: 100%;"
+    />
+  </div>
+</div>
+`;

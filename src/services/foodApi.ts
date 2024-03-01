@@ -7,7 +7,7 @@ export const foodApi = createApi({
   endpoints: (builder) => ({
     getComments: builder.query<Comment[], number>({
       query: (count) => `comments?limit=${count}`,
-	  transformResponse: (response:any) => {
+	    transformResponse: (response:any) => {
         return  response.comments.map((comment: CommentResponse) => {
             return {
               id: comment.id,
@@ -18,15 +18,18 @@ export const foodApi = createApi({
           })
       },
     }),
-	getFirstThreeTheBestRatingsRecipes: builder.query<Recipe[],void>({
-      query: () => `recipes?limit=50&select=name,prepTimeMinutes,cookTimeMinutes,tags,image,rating`,
-	  transformResponse: (response:any) => {
-        return response.recipes
-            .toSorted((r1: Recipe, r2: Recipe) => r2.rating - r1.rating)
-            .slice(0, 3);
-      },
+    getFirstThreeTheBestRatingsRecipes: builder.query<Recipe[],void>({
+        query: () => `recipes?limit=50&select=name,prepTimeMinutes,cookTimeMinutes,tags,image,rating`,
+      transformResponse: (response:any) => {
+          return response.recipes
+              .toSorted((r1: Recipe, r2: Recipe) => r2.rating - r1.rating)
+              .slice(0, 3);
+        },
+      }),
+ 
     }),
-  }),
+    
+    
 })
 
 export const { useGetCommentsQuery, useGetFirstThreeTheBestRatingsRecipesQuery } = foodApi

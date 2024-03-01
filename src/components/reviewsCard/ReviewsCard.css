@@ -4,6 +4,14 @@
 	background-color: white;
 	box-shadow: 6px 32px 30px 0px rgba(34, 60, 80, 0.2);
 	margin-bottom: 87px;
+	position: relative;
+	top: 0px;
+
+}
+
+.reviewCard__card:hover{
+top:-10px;
+transition: top 0.5s;
 }
 
 .reviewCard__name {

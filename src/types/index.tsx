@@ -7,6 +7,12 @@ export type Post = {
   reactions: number;
 };
 
+export type AddComment = {
+  body: string;
+  postId: number;
+  userId: number;
+};
+
 export type User = {
   firstName: string;
   lastName: string;

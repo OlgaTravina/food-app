@@ -1,17 +1,30 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BlogCard from "../../components/blogCard/BlogCard";
-import Menu from "../../components/menu/Menu";
-import Footer from "../../components/footer/Footer";
 import "./BlogPage.css";
 import type { Post} from "../../types";
 
+type User = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  image: string;
+};
+
+type BlogPost = {
+  title: string;
+  id: number;
+  body: string;
+  user: User;
+  tags: string[];
+  reactions: number;
+};
 
 
 const countCardBlogOnPage = 12;
 
 function BlogPage() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [pageNum, setPageNum] = useState(0);
   const [totalPosts, setTotalPosts] = useState(0);
   const navigate = useNavigate();
@@ -23,15 +36,33 @@ function BlogPage() {
     )
       .then((response) => response.json())
       .then((data) => {
-        setPosts(data.posts);
-        setTotalPosts(data.total);
+        const users = [] as User[]
+        Promise.all(
+          data.posts.map((post: Post) =>
+            fetch(
+              `https://dummyjson.com/users/${post.userId}?select=id,firstName,lastName,image`
+            )
+              .then((response) => response.json())
+              .then((user: User) => users.push(user))
+          )
+        ).then(() => {
+          const blogPosts = data.posts.map((post: Post) => ({
+            title: post.title,
+            id: post.id,
+            body: post.body,
+            user: users.find((user) => user.id === post.userId),
+            tags: post.tags,
+            reactions: post.reactions,
+          }));
+          setPosts(blogPosts);
+          setTotalPosts(data.total);
+        });
+        
       });
   }, [pageNum]);
 
-  return (
-    <div className="main-background-color">
+  return (    
       <div className="container-1248">
-        <Menu />
         <h1 className="blogPage__header">
           Latest <span className="highlight-text">Article</span>
         </h1>
@@ -51,6 +82,11 @@ function BlogPage() {
               body={post.body}
               tags={post.tags}
               reactions={post.reactions}
+              user={{
+                image: post.user?.image,
+                lastName: post.user?.lastName,
+                firstName: post.user?.firstName,
+              }}
               onClick={(e) => navigate("/blog/" + post.id)}
             />
           ))}
@@ -58,7 +94,9 @@ function BlogPage() {
 
         <div style={{ textAlign: "center", paddingTop: "90px" }}>
           <img
-            onClick={(e) =>pageNum !== 0 && setPageNum((pageNum) => pageNum - 1)}
+            onClick={(e) =>
+              pageNum !== 0 && setPageNum((pageNum) => pageNum - 1)
+            }
             src="images/Blog Page/Next.svg"
             alt=""
             style={{
@@ -68,7 +106,10 @@ function BlogPage() {
             }}
           />
           <img
-            onClick={(e) =>(pageNum + 1) * 12 < totalPosts && setPageNum((pageNum) => pageNum + 1)}
+            onClick={(e) =>
+              (pageNum + 1) * 12 < totalPosts &&
+              setPageNum((pageNum) => pageNum + 1)
+            }
             src="images/Blog Page/Next.svg"
             alt=""
             style={{
@@ -77,11 +118,7 @@ function BlogPage() {
             }}
           />
         </div>
-
-       
-      </div>
-      <Footer />
-    </div>
+      </div>   
   );
 }
 
