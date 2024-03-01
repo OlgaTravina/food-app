@@ -10,7 +10,7 @@
 	font-size: 19px;
 	font-weight: 800;
 	line-height: 28px;
-	letter-spacing: 0.6282353401184082px;
+	letter-spacing: 0.6px;
 	text-align: left;
 	color: rgba(26, 32, 44, 1);
 }
@@ -20,7 +20,7 @@
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 24px;
-	letter-spacing: 0.6282353401184082px;
+	letter-spacing: 0.6px;
 	text-align: left;
 	color: rgba(160, 174, 192, 1);
 }
@@ -30,7 +30,7 @@
 	font-size: 22px;
 	font-weight: 800;
 	line-height: 33px;
-	letter-spacing: 0.3141176700592041px;
+	letter-spacing: 0.3;
 	text-align: right;
 	color: rgba(26, 32, 44, 1);
 }
